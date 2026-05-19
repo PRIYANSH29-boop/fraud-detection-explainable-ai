@@ -4,6 +4,32 @@ Running log of what got done, decisions made, and open questions. Newest session
 
 ---
 
+## Session 3 — 2026-05-19 — Two-week plan committed
+
+### What was done
+- Wrote out a full 2-week day-by-day plan (Week 1 = investigative EDA, Week 2 = build + ship). Now lives in `PROJECT_CONTEXT.md` under "Two-week plan" (replaces the old 1-week sketch).
+- Got pushback from Claude on five points before committing.
+
+### Pushback considered and rejected (keep visible so future-me can re-evaluate)
+1. **EDA too long.** Cutting Wed (V-feature dists + correlation heatmap) to half a day was suggested as recoverable buffer. Rejected — those plots feed the fraud archetype work on Fri and the feature drops on Mon-W2.
+2. **Sun is not real buffer if it has work in it.** Suggestion: move write-ups into each day, leave Sun empty. Rejected — prefer batched consolidation; will revisit if Sat overruns.
+3. **Streamlit + deploy in 2 days is the standard underestimate.** Specifically: `streamlit-shap` has version-pinning headaches. Noted. Mitigation: prototype the SHAP-in-Streamlit piece on Thu (W2) while already in SHAP-land if Fri starts looking thin.
+4. **5 notebooks = hidden cleanup tax on W2 Sat.** Suggestion: collapse 01+02 (EDA + label audit) and 04+05 (modelling + evaluation) into 2 notebooks. Rejected for now — separate notebooks help the narrative; revisit if Sat polish day blows up.
+5. **Label audit (Thu, W1) is the strongest interview story — flip it earlier.** Suggestion: do label audit Tue, then EDA, since audit findings change what to look for. Rejected — want grounding in normal EDA first before running the unsupervised cross-check. **But: if Tue–Wed overrun, the label audit is the thing to defend, not the thing to drop.**
+
+### Added to scope
+- README will include a "what didn't work" section. UK fintech interviewers ask about failed experiments more than successful ones. Cheap if a one-line log is kept as work progresses.
+
+### Decisions made
+- **Schedule committed as-written.** Risks listed in `PROJECT_CONTEXT.md` for end-of-W1 retrospective.
+- **Mentally budget 3 weeks**, not 2. Quality > speed.
+
+### Open / TODO
+- [ ] End of Week 1 (2026-05-24): retrospective on velocity. Re-evaluate the five rejected pushbacks with real data.
+- [ ] Start keeping a one-line "what didn't work" log as W1 progresses, so the README section writes itself.
+
+---
+
 ## Session 2 — 2026-05-19 — Data sanity check notebook
 
 ### What was done

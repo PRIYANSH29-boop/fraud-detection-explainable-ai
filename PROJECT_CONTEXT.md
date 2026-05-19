@@ -73,14 +73,36 @@ fraud-detection/
 └── LICENSE
 ```
 
-## Week plan (adaptive — Mon's findings reshape the rest)
-- **Mon:** Investigative EDA — find ≥2 surprising things about the data
-- **Tue:** Feature engineering + label audit (Isolation Forest parallel track)
-- **Wed:** Modelling — Logistic Regression baseline + XGBoost with proper imbalance handling
-- **Thu:** Evaluation — PR-AUC, F1, cost-weighted metrics, threshold tuning, SHAP
-- **Fri:** Streamlit app — transaction input, SHAP waterfall, threshold slider, cost calculator
-- **Sat:** Deploy + README + repo polish
-- **Sun:** Loom demo + LinkedIn post
+## Two-week plan (adaptive — earlier findings reshape what comes after)
+
+**Week 1 — Investigate the data**
+- **Mon:** Project scaffolding, sanity check notebook, `load_raw()`. ✓ (done 2026-05-19)
+- **Tue:** Investigative EDA Part 1 — class distribution, Amount-by-class (log scale), Time→hour transaction frequency by class. 3–4 hrs.
+- **Wed:** Investigative EDA Part 2 — V-feature distributions by class, V-feature correlation heatmap, conditional independence question. 3–4 hrs.
+- **Thu:** Label audit (`02_label_audit.ipynb`) — Isolation Forest unsupervised, compare anomaly scores to labels, investigate disagreements. **The differentiator — protect this day.** 4–5 hrs.
+- **Fri:** Fraud archetypes + cost analysis — KMeans on 492 fraud rows (k=2..5), profile clusters, compute £-concentration (top X% of frauds = Y% of loss). 3–4 hrs.
+- **Sat:** Day 1 vs Day 2 drift — split on Time<86400, compare fraud rate / Amount dist / V dists, frame as ML risk. 2–3 hrs.
+- **Sun:** Catch-up + consolidate — "Key insights" section in EDA notebook, update `notes.md` with modelling implications. Buffer.
+
+**Week 2 — Build, evaluate, ship**
+- **Mon:** Feature engineering (`03_feature_engineering.ipynb`) — drop weak features (EDA-justified), engineer hour-of-day / amount bins / freq, test SMOTE vs scale_pos_weight vs undersampling, stratified split. 5 hrs.
+- **Tue:** Modelling (`04_modelling.ipynb`) — LR baseline (`class_weight='balanced'`), XGBoost (`scale_pos_weight` tuned), GridSearchCV on `max_depth`/`n_estimators`/`learning_rate`, compare on PR-AUC + F1 + custom £-cost. 5–6 hrs.
+- **Wed:** Evaluation (`05_evaluation.ipynb`) — PR curve, confusion matrix at 0.5, **headline chart**: precision-recall-cost vs threshold, pick a business-recommended threshold. 4 hrs.
+- **Thu:** SHAP — summary plot, waterfall for 3 fraud predictions, waterfall for 1 false positive (why did it get it wrong?). 3–4 hrs.
+- **Fri:** Streamlit app (`app/streamlit_app.py`) — transaction input form + sample selector, predict button → probability + decision, SHAP waterfall, threshold slider with live P/R/cost, "sample a real fraud / real legit" buttons. 6 hrs.
+- **Sat:** Deploy to Streamlit Community Cloud, write README properly (problem, findings, architecture diagram, screenshots, how-to-run, known limitations), clean commits, 3-min Loom. 5 hrs.
+- **Sun:** LinkedIn post (focus on findings, not features), reflection in `notes.md` for Project 2. 2 hrs.
+
+**Total: ~60–70 hours over 14 days (~4 hrs/day avg).** Mentally budget 3 weeks if life intrudes — project quality > speed.
+
+**Schedule risks flagged but not adopted (2026-05-19 planning convo):**
+- EDA front-loaded (6 days before any model) — if Week 1 slips, Week 2 collapses.
+- Sun "catch-up + consolidate" is work, not real buffer.
+- Streamlit + deploy in 2 days is the standard underestimate; SHAP-in-Streamlit specifically has version-pinning fiddliness.
+- 5 notebooks = hidden cleanup tax in Week 2 Sat (consider collapsing 01+02 and 04+05 if pressed for time).
+- Label audit on Thu (day 4 of 7) is the strongest interview story — first thing to drop if Tue–Wed overrun. Revisit on Wed whether to defend it or pull it earlier.
+
+Decision: keep schedule as-written, revisit risks at end of Week 1 with real data on velocity.
 
 ## How I work with AI (read this carefully)
 - **I think, you code.** Don't hand me solutions before I've reasoned about the problem. Ask me what I'd try first.
