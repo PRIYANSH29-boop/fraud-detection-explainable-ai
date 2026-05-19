@@ -5,3 +5,7 @@ __pycache__/
 .env
 .ipynb_checkpoints/
 models/*.pkl
+kaggle.json
+.vscode/
+.DS_Store
+.claude/
