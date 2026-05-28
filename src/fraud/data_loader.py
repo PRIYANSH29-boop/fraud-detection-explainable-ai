@@ -3,8 +3,8 @@
 from pathlib import Path
 import pandas as pd
 
-# Project root = parent of the src/ folder = .../fraud-detector/
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+# Project root = .../fraud-detector/ (three levels up from src/fraud/data_loader.py)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 RAW_CSV_PATH = PROJECT_ROOT / "data" / "raw" / "creditcard.csv"
 
 # Expected data contract — used for validation

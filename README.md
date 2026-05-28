@@ -31,6 +31,21 @@ reports/     figures for README/LinkedIn
 tests/       pytest
 ```
 
+## Tasks
+
+All entry points are invoked via `uv run <name>` from the project root, regardless
+of current working directory:
+
+| Command         | What it does                                                |
+| --------------- | ----------------------------------------------------------- |
+| `uv run eda`    | Launch the EDA notebook (`notebooks/01_eda.ipynb`) in Jupyter Lab |
+| `uv run test`   | Run the `pytest` test suite                                 |
+| `uv run lint`   | Run `ruff check` on `src` and `tests`                       |
+| `uv run fmt`    | Run `ruff format` on `src` and `tests`                      |
+
+Dev dependencies (`ruff`, `pytest`) live in the `dev` group in `pyproject.toml`
+and are installed automatically by `uv run` / `uv sync`.
+
 ## Live demo
 
 _TBD — Streamlit Community Cloud URL goes here once deployed._

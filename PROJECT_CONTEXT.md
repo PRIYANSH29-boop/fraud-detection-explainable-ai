@@ -126,4 +126,4 @@ Decision: keep schedule as-written, revisit risks at end of Week 1 with real dat
 2. Deployed live app on Streamlit Cloud with public URL
 3. README that a senior DS would read and think "this person thinks like a colleague, not a student"
 4. At least one finding I can defend rigorously in an interview when pushed back on
-5. Repo passes `git clone → pip install → run` on a fresh machine
+5. Repo passes `git clone → pip install → run` on a fresh machine   
