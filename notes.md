@@ -4,6 +4,33 @@ Running log of what got done, decisions made, and open questions. Newest session
 
 ---
 
+## W1 Retrospective — 2026-05-30 (the 2026-05-24 checkpoint, written late)
+
+Draft from the git timeline. The bracketed lines were the judgement calls only I could make — filled 2026-05-30, with repo facts folded in where they bore on the call.
+
+### What the timeline actually shows
+- 2026-05-19: scaffolding + sanity-check notebook + two-week plan all committed (Sessions 1–3).
+- 2026-05-21: EDA findings landed (`0c9d8c1d`) — roughly on the W1-Tue/Wed slot. Good.
+- 2026-05-21 → 2026-05-28: **7-day gap**, then a package refactor (`c5be0b03`, flat `src/` → installable `src/fraud/`).
+- 2026-05-30 (today): mid feature-engineering, uncommitted.
+- Planned W1 close was 2026-05-24. Today is 2026-05-30, so W2 is starting **~6 days behind the original 2-week plan** — but inside the 3-week budget set in Session 3. Not a crisis; a planned-for slip.
+
+### Where the time went
+- The package refactor (`c5be0b03`) and a **label-audit overrun**, plus genuine time off-project (life). Notably *not* the archetypes: `02b_fraud_archetypes.ipynb` is still a 0-byte stub — that work never started, so it can't have eaten the week. The honest read is three sinks, none of them the thing the renumbering-today makes it look like was in flight.
+- The refactor **needed to happen then** — the `sys.path` shims were actively biting and going installable (`src/fraud/`) unblocked clean imports across the notebooks. It ate real time, but it wasn't avoidable yak-shaving; the cost was justified, not a detour. (Flag for W2: don't let "justified" become a habit of refactoring mid-investigation.)
+
+### Re-evaluating the five rejected pushbacks (now with real velocity data)
+1. **Cut Wed EDA to half a day.** Hold the original call — but with an asterisk. The V-feature plots *did* land (`01_eda.ipynb`, 191 KB) and they're good. But the justification for keeping Wed full was "they feed Fri's archetype work" — and archetype work (`02b`) is still an empty stub, so the plots are **sitting unused so far**. The call wasn't wrong, but the payoff is *owed*, not yet banked. Don't re-litigate; do cash it in early W2.
+2. **Sun batched write-ups vs per-day.** Unrelated. The 7-day gap was the refactor + label-audit overrun + time off-project — not the batched-write-up cadence. Batching isn't implicated, so leave that call alone. (If anything, per-day write-ups wouldn't have closed a gap that was mostly off-project time.)
+3. **Streamlit + streamlit-shap pinning underestimate.** STILL THE BIGGEST UNMITIGATED RISK — W2 ship phase hasn't started and this was flagged as the standard trap. Decision: **yes — prototype the SHAP-in-Streamlit piece early in W2, before the polish day**, exactly as the Session-3 plan said. Holding W2 scope (see below) means this risk stays live, so de-risking it first is the whole point of keeping the buffer. Concretely: a throwaway "does `streamlit-shap` even import + render one force plot against pinned versions" spike before any real app work.
+4. **5 notebooks = cleanup tax.** Now effectively 6 (archetypes split out, renumbered 02b today). Hold the separate-notebooks call — narrative clarity over cleanup tax, same as Session 3. Caveat: the "6th" is nominal — `02b` is an empty stub, so there's no real tax there yet. Revisit folding (likely 04+05) only if the W2-Sat polish day actually overruns.
+5. **Label audit is the strongest interview story.** Largely done — `02_label_audit.ipynb` has 4 executed code cells with outputs, real work on disk. It *overran* its W1-Thu slot (that's one of the three time-sinks above) — which actually **validates the original prediction**: it was the thing to defend, and defend it I did, by letting it overrun rather than dropping it. Still agree, and the evidence now backs it.
+
+### Decision out of this retro
+- **Hold W2 scope; spend the 3rd-week buffer budgeted in Session 3.** No scope cut. W2 opens ~6 days behind the original 2-week line but inside the 3-week budget — a planned-for slip, not a crisis. "Quality > speed" stands. The one hard commitment that comes out of this: **SHAP-in-Streamlit spike first** (point 3) — that's what the buffer is for; don't spend it on polish.
+
+---
+
 ## Session 3 — 2026-05-19 — Two-week plan committed
 
 ### What was done
@@ -25,7 +52,7 @@ Running log of what got done, decisions made, and open questions. Newest session
 - **Mentally budget 3 weeks**, not 2. Quality > speed.
 
 ### Open / TODO
-- [ ] End of Week 1 (2026-05-24): retrospective on velocity. Re-evaluate the five rejected pushbacks with real data.
+- [x] End of Week 1 (2026-05-24): retrospective on velocity. Re-evaluate the five rejected pushbacks with real data. → written 2026-05-30 (top of file).
 - [ ] Start keeping a one-line "what didn't work" log as W1 progresses, so the README section writes itself.
 
 ---
