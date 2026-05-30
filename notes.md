@@ -28,6 +28,8 @@ Draft from the git timeline. The bracketed lines were the judgement calls only I
 
 ### Decision out of this retro
 - **Hold W2 scope; spend the 3rd-week buffer budgeted in Session 3.** No scope cut. W2 opens ~6 days behind the original 2-week line but inside the 3-week budget — a planned-for slip, not a crisis. "Quality > speed" stands. The one hard commitment that comes out of this: **SHAP-in-Streamlit spike first** (point 3) — that's what the buffer is for; don't spend it on polish.
+- **Confirmed 2026-05-30: keep all 6 differentiators, accept this runs past one week. Soft finish target ~2026-06-20** (a pacing date, not a hard deadline).
+- **Build in priority order so the project is ALWAYS shippable:** model -> cost-based (£) evaluation + threshold slider -> Streamlit app FIRST; then SHAP; **fraud archetypes (`02b`) LAST.** Rationale: at every point there's a complete working app, not 6 half-built notebooks. If interrupted, a finished core beats a pile of stubs.
 
 ---
 
